@@ -1,0 +1,45 @@
+
+
+
+
+
+To retrieve the AMI ID using the AWS Command Line Interface (CLI), you can use the `describe-images` command. Here's an example of how you can do this:
+
+1. Install and configure the AWS CLI if you haven't already. You can refer to the official AWS CLI documentation for instructions on installation and configuration.
+
+2. Open a terminal or command prompt and run the following command to retrieve the AMI ID:
+
+   ```bash
+   aws ec2 describe-images --owners amazon --filters "Name=name,Values=amzn2-ami-hvm-*" "Name=root-device-type,Values=ebs" --query 'Images[0].ImageId' --output text
+   ```
+
+   This command will fetch the latest Amazon Linux 2 AMI that matches the specified filter criteria and return the corresponding AMI ID.
+
+   - The `--owners amazon` flag ensures that only images owned by Amazon are considered.
+   - The `--filters` flag specifies the filter criteria. In this example, we filter by the image name and root device type to match the Amazon Linux 2 EBS-backed images.
+   - The `--query` flag with the `'Images[0].ImageId'` parameter retrieves the AMI ID of the first image in the result.
+   - The `--output text` flag formats the output as plain text.
+
+   Note: You can adjust the filter values to match your specific requirements if you want a different type of AMI.
+
+Running the command will output the AMI ID of the latest matching image.
+
+Get the subnet id
+ aws ec2 describe-subnets
+
+get the vpc id
+aws ec2 describe-vpcs
+
+get the key pair id
+aws ec2 describe-key-pairs
+
+create the key-pair
+aws ec2 create-key-pair --key-name my-key-pair --query 'KeyMaterial' --output text > my-key-pair.pem
+
+  terraform apply
+
+terraform ec2 describe-instances
+
+terraform destory
+
+terraform show

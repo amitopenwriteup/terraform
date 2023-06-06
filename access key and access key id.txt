@@ -1,0 +1,25 @@
+To obtain an Access Key ID and Secret Access Key in AWS, you'll need to follow these steps:
+
+1. Sign in to the AWS Management Console.
+2. Open the IAM (Identity and Access Management) service.
+3. In the IAM dashboard, select "Users" from the left-hand navigation pane.
+4. Choose the user for which you want to create or retrieve the access keys.
+5. Within the user's details page, scroll down to the "Security credentials" tab.
+6. Under the "Access keys" section, click on "Create access key" if you haven't created one before.
+ If you already have an existing access key, you can click on "Show" to view the details.
+
+Once you've created or retrieved the access key, take note of the following details:
+
+- Access Key ID: This is the unique identifier for the access key.
+- Secret Access Key: This is the secret key associated with the access key. 
+It will only be shown once when you first create the key. If you lose it, you'll need to create a new access key.
+
+It's important to keep your access key and secret key secure, a
+s they provide programmatic access to your AWS resources.
+ You can use these keys to authenticate your AWS API requests, s
+uch as when using Terraform or other AWS services programmatically.
+
+Note that if you no longer need an access key, 
+it's recommended to delete it to maintain security. 
+To delete an access key, go to the IAM dashboard, 
+select the user, and under the "Security credentials" tab, click on the "Delete" button next to the respective access key.
