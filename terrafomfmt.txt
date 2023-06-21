@@ -1,0 +1,30 @@
+The `terraform fmt` command is used to automatically format your Terraform configuration files. 
+It helps ensure consistent formatting and improves code readability. When you run `terraform fmt`,
+ it scans the specified files or the entire directory and applies the Terraform formatting rules to reformat the code.
+
+Here's how to use `terraform fmt`:
+
+1. Open a terminal or command prompt and navigate to the directory containing your Terraform configuration files.
+
+2. Run the following command to format all the files in the current directory:
+
+   ```shell
+   terraform fmt
+   ```
+
+   If you want to format a specific file, provide the file path instead:
+
+   ```shell
+   terraform fmt path/to/file.tf
+   ```
+
+3. `terraform fmt` will apply the formatting rules to the specified file(s) and overwrite them with the formatted version.
+
+The formatting rules enforced by `terraform fmt` include:
+
+- Indentation: The command adjusts the indentation levels to match the Terraform best practices, typically using two spaces per indentation level.
+- Alignment: It aligns equal symbols (`=`) in blocks and aligns resource blocks vertically.
+- Sorting: The command sorts resource blocks, variable blocks, and other sections alphabetically to improve consistency.
+
+Using `terraform fmt` is recommended as part of your Terraform development workflow to maintain consistent and clean code style across your configuration files. 
+It helps make your code more readable and minimizes the chances of formatting-related issues when collaborating with others or performing code reviews.

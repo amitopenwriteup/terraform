@@ -1,0 +1,26 @@
+In Terraform, the load order and semantics refer to the order in which Terraform loads and processes the various components of your configuration. Understanding the load order and semantics is important to ensure the correct evaluation and execution of your Terraform code. Here's an overview of the load order and semantics in Terraform:
+
+1. Load Order:
+   - Provider Configuration: Terraform loads provider configurations first. These are defined using the `provider` blocks in your Terraform code.
+   - Backend Configuration: Next, Terraform loads the backend configuration, which specifies where Terraform should store the state data. 
+This is defined using the `terraform` block with the `backend` configuration.
+   - Module Configuration: If you have modules in your Terraform code, Terraform loads the module configurations next. 
+The module configurations are loaded in the order they are defined.
+
+2. Semantics:
+   - Variable Declarations: Terraform evaluates and loads variable declarations next. 
+This includes variable definitions from the root module and any modules used within the configuration.
+   - Resource Configuration: Terraform processes the resource configurations next.
+ These define the desired state of your infrastructure resources. Resource configurations can be defined in the root module or in modules.
+   - Data Configuration: Data configurations are processed after resource configurations.
+ Data configurations fetch data from external sources or query information from the infrastructure. Similar to resource configurations, data configurations can be defined in the root module or in modules.
+   - Output Declarations: Finally, Terraform evaluates the output declarations.
+ Outputs define values that can be retrieved after Terraform has applied the infrastructure changes.
+
+It's important to note that Terraform evaluates and processes your configuration in a top-down manner, 
+respecting the dependencies and relationships defined between resources and modules. Terraform performs a dependency analysis to determine the correct order of 
+creating and managing resources based on their dependencies.
+
+By following the load order and understanding the semantics in Terraform, 
+you can ensure that your resources, variables, and outputs are defined and processed in the appropriate order,
+ leading to successful infrastructure provisioning and management.

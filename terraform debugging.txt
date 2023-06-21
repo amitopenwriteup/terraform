@@ -1,0 +1,40 @@
+Set the environment variable for debugging
+TF_LOG = DEBUG/INFO/WARN/TRACE
+TF_LOG_PATH = /*mention the log file name*/
+
+export TF_LOG=DEBUG
+echo $TF_LOG
+export TF_LOG_PATH="/root/tmp/tf.log"
+export $TF_LOG_PATH
+
+The `terraform validate` command is used in Terraform to validate the syntax and structure of your Terraform configuration files 
+without actually executing any infrastructure provisioning actions. 
+It helps identify potential issues or errors in your configuration before applying changes to your infrastructure.
+
+When you run `terraform validate`, Terraform performs the following checks:
+
+1. Syntax Validation: Terraform checks the syntax of your configuration files for any syntax errors. 
+It verifies that the code is correctly formatted and follows the expected syntax rules.
+
+2. Configuration Validity: Terraform checks the validity of your configuration files against the provider schemas and resource definitions. 
+It ensures that the resources and settings you've specified are valid and supported by the configured providers.
+
+3. Required Variable Validation: Terraform checks if all required variables specified in your configuration files are provided with values.
+ If any required variables are missing, it will display an error message indicating which variables need to be set.
+
+4. Interpolation Validation: Terraform validates the interpolation expressions used in your configuration files.
+ It verifies that the expressions are correctly written and can be resolved during runtime.
+
+If any errors or issues are found during the validation process, Terraform will display error messages indicating the problem and the 
+location in the configuration files where the error occurred.
+
+It's important to note that `terraform validate` does not perform any remote checks against your infrastructure or provider services. 
+It primarily focuses on the static analysis of your configuration files to identify potential issues.
+
+Running `terraform validate` is a good practice before executing any Terraform commands such as `terraform plan` or `terraform apply` 
+to catch configuration errors early in the development process.
+
+Remember to navigate to the directory containing your Terraform configuration files before running the `terraform validate` command to ensure that 
+the correct files are validated.
+
+

@@ -1,0 +1,31 @@
+The `terraform graph` command in Terraform is used to generate a visual representation of the resource dependency graph. 
+It provides a visual overview of how resources are related to each other and helps you understand the dependencies and
+ relationships between different components in your Terraform configuration.
+
+To use the `terraform graph` command, navigate to your Terraform project directory in the command line and run the following command:
+
+```
+terraform graph
+```
+
+This command generates a textual representation of the resource dependency graph in the Graphviz DOT format. 
+By default, the output is displayed in the console.
+
+If you have Graphviz installed on your system, you can generate a visual representation of the graph by piping the output of `terraform graph` to the `dot` command:
+
+```
+terraform graph | dot -Tsvg > graph.svg
+```
+
+This command pipes the output of `terraform graph` to the `dot` command, which converts the DOT format to an SVG file named `graph.svg`.
+
+Once you have the SVG file, you can open it in a web browser or an image viewer that supports SVG files to view the resource dependency graph. 
+The graph visually represents the relationships between resources, showing how they depend on each other and the order in which they will be
+ created or modified during Terraform operations.
+
+The resource dependency graph is particularly helpful when you have complex infrastructure configurations with many resources and dependencies.
+ It allows you to visualize and understand the impact of changes, identify potential issues or circular dependencies, and analyze the overall 
+structure of your infrastructure.
+
+Note that the `terraform graph` command requires the Terraform configuration to be initialized and the provider plugins to be installed. 
+Make sure you run `terraform init` before using the `terraform graph` command.

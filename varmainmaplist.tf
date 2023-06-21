@@ -1,9 +1,8 @@
 provider "aws" {
-  access_key = "AKIA43KKKGRBXH7S5HHU"
-  secret_key = "t+BbkEPyYnZGA1Na40st1zRf5aMOWt2iH9aEHQK8"
+  access_key = "<provide access key>"
+  secret_key = "<provide secret key>"
   region     = "us-west-2"   # Replace with your desired AWS region
 }
-
 resource "aws_instance" "example" {
   ami           = var.ec2_instance["ami_id"]  # Replace with your desired AMI ID
   instance_type = var.ec2_instance["ami_id"]
@@ -14,3 +13,4 @@ resource "aws_instance" "example" {
 
   security_groups = [var.ec2_instance.security_groups[0]]
 
+}

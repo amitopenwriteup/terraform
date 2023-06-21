@@ -7,8 +7,8 @@ terraform {
   }
 }
 provider "aws" {
-  access_key = "AKIA43KKKGRBXH7S5HHU"
-  secret_key = "t+BbkEPyYnZGA1Na40st1zRf5aMOWt2iH9aEHQK8"
+  access_key = "<provide access key>"
+  secret_key = "<provide secret key>"
   region     = "us-west-2"   # Replace with your desired AWS region
 }
 
