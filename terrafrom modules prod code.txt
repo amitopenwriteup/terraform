@@ -1,0 +1,105 @@
+To create an AWS environment in two regions using Terraform with modules, you can modularize the resources for each region. Here's an example of how you can organize the code using modules:
+
+1. Create a directory structure for your Terraform project:
+
+
+.
+├── main.tf
+├── variables.tf
+├── modules
+│   ├── region1
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── outputs.tf
+│   └── region2
+│       ├── main.tf
+│       ├── variables.tf
+│       └── outputs.tf
+└── outputs.tf
+
+
+2. Define the main.tf file in the root directory to call the modules for each region:
+
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+module "region1" {
+  source = "./modules/region1"
+}
+
+provider "aws" {
+  region = "us-west-2"
+}
+
+module "region2" {
+  source = "./modules/region2"
+}
+
+
+3. Define the variables.tf file in the root directory to declare the variables used in the modules:
+
+
+variable "vpc_cidr_region1" {
+  description = "CIDR block for VPC in region 1"
+  type        = string
+  default     = "10.0.0.0/16"
+}
+
+variable "vpc_cidr_region2" {
+  description = "CIDR block for VPC in region 2"
+  type        = string
+  default     = "10.1.0.0/16"
+}
+
+
+4. Define the outputs.tf file in the root directory to output any relevant information:
+
+
+output "region1_vpc_id" {
+  description = "VPC ID in region 1"
+  value       = module.region1.vpc_id
+}
+
+output "region2_vpc_id" {
+  description = "VPC ID in region 2"
+  value       = module.region2.vpc_id
+}
+
+
+5. Define the modules/region1/main.tf file for the resources in region 1:
+
+
+resource "aws_vpc" "main" {
+  cidr_block = var.vpc_cidr_region1
+  tags = {
+    Name = "production-vpc-region1"
+  }
+}
+
+output "vpc_id" {
+  description = "VPC ID in region 1"
+  value       = aws_vpc.main.id
+}
+
+# Define other resources for region 1
+
+
+6. Define the modules/region2/main.tf file for the resources in region 2:
+
+
+resource "aws_vpc" "main" {
+  cidr_block = var.vpc_cidr_region2
+  tags = {
+    Name = "production-vpc-region2"
+  }
+}
+
+output "vpc_id" {
+  description = "VPC ID in region 2"
+  value       = aws_vpc.main.id
+}
+
+# Define other resources for region 2
+
